@@ -6,7 +6,6 @@ using System.Collections.Generic;
 using System.Threading;
 using Cysharp.Threading.Tasks;
 using TMPro;
-// using UnityChan; // FaceUpdate は使用しないためコメントアウトまたは削除
 using VRM; // VRMBlendShapeProxy, BlendShapeKey, BlendShapePreset を使うために必要
 using VoicevoxClientSharp;
 using VoicevoxClientSharp.Unity;
@@ -82,7 +81,7 @@ public class ConversationManager : MonoBehaviour
             Debug.LogError("UIコンポーネント（TMP版含む）が未設定です。");
         else
         {
-            aiResponseText.text = "何か話しかけるか、マイクボタンを押してね！";
+            aiResponseText.text = "テキストフィールドに文字を打ってね!";
             sendButton.onClick.AddListener(OnSendButtonClicked);
         }
 
@@ -129,10 +128,6 @@ public class ConversationManager : MonoBehaviour
 
         StartCoroutine(languageModelService.GetResponse(userInput, (response) =>
         {
-            // 「考え中...」メッセージを実際の応答で置き換える
-            // まず、元のメッセージの長さを取得しておき、そこから後ろを新しい応答で上書きするイメージ
-            // ただし、aiResponseText.text += thinkingMessage; で追記しているので、
-            // 単純に aiResponseText.text = (元のテキスト) + "\nAI: " + response; とする方が簡単。
             int thinkingMessageIndex = aiResponseText.text.LastIndexOf(thinkingMessage);
             if(thinkingMessageIndex >= 0)
             {
@@ -258,17 +253,6 @@ public class ConversationManager : MonoBehaviour
 
 public interface ILanguageModelService { IEnumerator GetResponse(string userInput, System.Action<string> callback); }
 
-// PlaceholderLMService (テスト用)
-public class PlaceholderLMService : ILanguageModelService 
-{
-    private string[] placeholderResponses = { "なるほどですね！", "それは興味深いですね。", "もう少し詳しく教えていただけますか？" };
-    public IEnumerator GetResponse(string userInput, System.Action<string> callback) 
-    {
-        Debug.Log($"PlaceholderLMService: 「{userInput}」への応答をダミー生成中...");
-        yield return new WaitForSeconds(Random.Range(0.5f, 1.5f)); // 少しランダムな遅延
-        callback(placeholderResponses[Random.Range(0, placeholderResponses.Length)]);
-    }
-}
 
 // OllamaLMService (実際のLLM連携用)
 public class OllamaLMService : ILanguageModelService
