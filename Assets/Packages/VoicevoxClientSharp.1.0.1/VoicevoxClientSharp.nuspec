@@ -1,0 +1,21 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<package xmlns="http://schemas.microsoft.com/packaging/2013/05/nuspec.xsd">
+  <metadata>
+    <id>VoicevoxClientSharp</id>
+    <version>1.0.1</version>
+    <title>VoicevoxClientSharp</title>
+    <authors>TORISOUP</authors>
+    <license type="expression">MIT</license>
+    <licenseUrl>https://licenses.nuget.org/MIT</licenseUrl>
+    <readme>README.md</readme>
+    <description>This package is a client library designed for operating VOICEVOX.exe, voicevox_engine, and AvisSpeech. When using Unity, it is recommended to also install VoicevoxClientSharp.Unity for greater convenience. For more information, please refer to the repository's README.</description>
+    <copyright>TORISOUP</copyright>
+    <repository type="git" url="https://github.com/TORISOUP/VoicevoxClientSharp" commit="e5eb429d546cea90ef1023aa4711568168762e8c" />
+    <dependencies>
+      <group targetFramework=".NETStandard2.0">
+        <dependency id="System.Text.Json" version="8.0.5" exclude="Build,Analyzers" />
+        <dependency id="System.Threading.Tasks.Extensions" version="4.5.4" exclude="Build,Analyzers" />
+      </group>
+    </dependencies>
+  </metadata>
+</package>
