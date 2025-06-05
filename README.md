@@ -18,6 +18,7 @@ Spatial Reality Display 対応: Spatial Reality Display Plugin for Unity を活�
 Unity: 2022.3.62f1
 ## 使用ライブラリ
 このプロジェクトは、以下の主要なUnityライブラリおよび外部連携ライブラリを使用しています。
+* DoTween
 * UniTask(https://github.com/Cysharp/UniTask)
 * VoicevoxClientSharp(https://github.com/TORISOUP/VoicevoxClientSharp)
 * UniVRM(https://github.com/vrm-c/UniVRM)
